@@ -2,31 +2,92 @@
 
 <br/>
 
-```
-████████╗ █████╗ ██╗     ███████╗███╗   ██╗████████╗██╗ ██████╗ 
-╚══██╔══╝██╔══██╗██║     ██╔════╝████╗  ██║╚══██╔══╝██║██╔═══██╗
-   ██║   ███████║██║     █████╗  ██╔██╗ ██║   ██║   ██║██║   ██║
-   ██║   ██╔══██║██║     ██╔══╝  ██║╚██╗██║   ██║   ██║██║▄▄ ██║
-   ██║   ██║  ██║███████╗███████╗██║ ╚████║   ██║   ██║╚██████╔╝
-   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚══▀▀═╝ 
-```
-
-### ** Candidate Shortlisting System**
-*Binary Classification · Multi-Model Comparison · Production-Ready Pipeline*
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=200&section=header&text=TalentIQ&fontSize=80&fontColor=ffffff&fontAlignY=38&desc=AI-Powered%20Candidate%20Shortlisting%20System&descAlignY=58&descSize=18&descColor=90cdf4&animation=fadeIn" width="100%"/>
 
 <br/>
 
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center">
+
+```
+  🧠  Predict · Compare · Shortlist  🎯
+```
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+<!-- STAT PILLS -->
+<img src="https://img.shields.io/badge/Accuracy-85.03%25-0ea5e9?style=flat-square&labelColor=0f172a" />
+&nbsp;
+<img src="https://img.shields.io/badge/F1--macro-0.7165-8b5cf6?style=flat-square&labelColor=0f172a" />
+&nbsp;
+<img src="https://img.shields.io/badge/ROC--AUC-0.7963-10b981?style=flat-square&labelColor=0f172a" />
+&nbsp;
+<img src="https://img.shields.io/badge/Winner-XGBoost-f97316?style=flat-square&labelColor=0f172a" />
+&nbsp;
+<img src="https://img.shields.io/badge/Models-3%20Compared-ec4899?style=flat-square&labelColor=0f172a" />
+
+<br/><br/>
+
+<!-- TECH STACK BADGES -->
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![XGBoost](https://img.shields.io/badge/XGBoost-Winner-FF6600?style=for-the-badge&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io)
+[![XGBoost](https://img.shields.io/badge/XGBoost-Gradient%20Boosting-FF6600?style=for-the-badge&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-Pipeline-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
-[![Dataset](https://img.shields.io/badge/Dataset-IBM%20HR%20Analytics-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
-[![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
 
 <br/>
 
-> **Recruiters receive hundreds to thousands of resumes per opening.**  
-> TalentIQ eliminates manual screening with a tuned ML pipeline that predicts candidate shortlisting  
-> from structured profile data — education, experience, skills, certifications, projects, and soft skills.
+[![Dataset](https://img.shields.io/badge/📊%20Dataset-IBM%20HR%20Analytics-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
+[![SMOTE](https://img.shields.io/badge/Imbalance-SMOTE%20Applied-22C55E?style=for-the-badge)](https://imbalanced-learn.org)
+[![License](https://img.shields.io/badge/License-MIT-a855f7?style=for-the-badge)](LICENSE)
+
+<br/>
+
+---
+
+<table border="0" width="85%">
+<tr>
+<td align="center" width="25%" style="padding: 10px">
+<br/>
+<b>🎯 Task</b><br/>
+Binary Classification<br/>
+<code>Hired = Yes / No</code>
+</td>
+<td align="center" width="25%" style="padding: 10px">
+<br/>
+<b>📦 Dataset</b><br/>
+IBM HR Analytics<br/>
+<code>1,470 employees</code>
+</td>
+<td align="center" width="25%" style="padding: 10px">
+<br/>
+<b>🔬 Models</b><br/>
+LR · RF · XGBoost<br/>
+<code>5-fold CV tuning</code>
+</td>
+<td align="center" width="25%" style="padding: 10px">
+<br/>
+<b>✅ Winner</b><br/>
+XGBoost<br/>
+<code>F1=0.7165</code>
+</td>
+</tr>
+</table>
+
+<br/>
+
+> *"Recruiters receive hundreds to thousands of resumes per job opening.*  
+> *Manual screening is slow, inconsistent, and unscalable."*
+>
+> **TalentIQ fixes that** — a tuned ML pipeline trained on structured candidate data:  
+> education · experience · skills · certifications · projects · soft skills
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0f2027,100:2c5364&height=3&section=header" width="85%"/>
 
 <br/>
 
