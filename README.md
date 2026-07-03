@@ -2,7 +2,7 @@
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=180&section=header&text=ACM%20SIGAI&fontSize=70&fontColor=ffffff&fontAlignY=38&desc=Week%201%20%26%20Week%202%20%E2%80%94%20Individual%20Task%20Submissions&descAlignY=58&descSize=18&descColor=90cdf4&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=180&section=header&text=ACM+SIGAI&fontSize=70&fontColor=ffffff&fontAlignY=38&desc=Week+1+and+Week+2+Individual+Task+Submissions&descAlignY=58&descSize=18&descColor=90cdf4&animation=fadeIn" width="100%"/>
 
 <br/>
 
@@ -112,9 +112,19 @@ A baseline Logistic Regression model starts at **Recall = 0.83**. The task is to
 
 A full config-driven classification pipeline comparing **Logistic Regression, Random Forest, and XGBoost** to predict employee attrition, with 10+ domain-engineered features, SMOTE for class imbalance, GridSearch/RandomSearch tuning, and SHAP explainability.
 
-**Result:** XGBoost selected as the winning model — **F1-macro 0.7165**, **ROC-AUC 0.7963**.
+**Model Evaluation**
 
-📁 [`workpulse/`](./workpulse) — see the folder's own README for the full write-up (pipeline diagram, feature engineering table, model comparison, misclassification analysis, quickstart).
+| Model | Accuracy | F1-macro | Precision | Recall | ROC-AUC | FPR | FNR | Verdict |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
+| Logistic Regression | 0.8537 | 0.7153 | 0.7262 | 0.7062 | 0.8010 | 0.0769 | 0.5106 | Baseline |
+| Random Forest | 0.8333 | 0.7116 | 0.6991 | 0.7285 | 0.7940 | 0.1174 | 0.4255 | Compare |
+| **XGBoost** | **0.8503** | **0.7165** | 0.7205 | 0.7128 | 0.7963 | 0.0850 | 0.4894 | ✅ **Winner** |
+
+> FPR = employees who stayed, predicted as leaving (wasted retention effort). FNR = employees who left, predicted as staying (missed at-risk employees — the costlier error). XGBoost was selected on F1-macro since the target is imbalanced (~84% stayed / ~16% left), with ROC-AUC as a tiebreaker.
+
+**Engineered Features:** 11 domain-derived signals including `IncomePerYear`, `LoyaltyIndex`, `WorkloadScore`, `OverTimeXSatisfaction`, and `StagnationRisk` — full formulas and business logic documented in the folder's own README.
+
+📁 [`workpulse/`](./workpulse) — see the folder's own README for the full write-up (pipeline diagram, feature engineering table, misclassification analysis, quickstart, config reference).
 
 ---
 
