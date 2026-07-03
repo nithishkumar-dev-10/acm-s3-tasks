@@ -48,7 +48,7 @@
 
 This repository holds my **ACM SIGAI recruitment submissions for Week 1 and Week 2**, kept together in one place so both tasks can be reviewed from a single link.
 
-| | Week 1 (Mandatory) | Week 2 (Elective — Task 2) |
+| | Week 1  | Week 2  |
 |---|---|---|
 | **Task** | Feature Engineering Challenge | Classification Pipeline |
 | **Dataset** | Santander Customer Transaction Prediction | IBM HR Analytics — Employee Attrition |
