@@ -1,1 +1,4 @@
 experiment,description,recall,precision,f1,notes
+exp01,"Baseline LR, no scaling, no class_weight",0.2748,,,"Didn't converge - max_iter reached, unscaled data"
+exp02,"Baseline LR, scaled, no class_weight",0.2810,,,"Scaling fixed convergence, recall still low - imbalance untreated"
+exp03,"Baseline LR, scaled, class_weight=balanced",0.7713,0.2837,0.4149,"Big jump from balancing classes, close to ~0.83 target. Precision dropped as tradeoff"
