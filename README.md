@@ -61,8 +61,8 @@ Each project increases in scope relative to the last: single-model optimization 
 ## Project Timeline
 
 ```
-Week 1-2   →  Feature Engineering Challenge   (Santander Transaction Prediction)
-Week 3-4   →  WorkPulse                       (IBM HR Attrition Prediction)
+Week 1   →  Feature Engineering Challenge   (Santander Transaction Prediction)
+Week 2   →  WorkPulse                       (IBM HR Attrition Prediction)
 Final      →  TransReliant Cascade            (Indian Railway Ticket Confirmation)
 ```
 
