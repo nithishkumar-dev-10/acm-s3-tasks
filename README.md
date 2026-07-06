@@ -52,8 +52,8 @@ Each project increases in scope relative to the last: single-model optimization 
 
 | Project Name | Stage | Status | Primary Focus |
 |---|:---:|:---:|---|
-| **Feature Engineering Challenge** | Week 1–2 | Completed | Feature engineering under a fixed model constraint (Logistic Regression only) |
-| **WorkPulse** | Week 3–4 | Completed | Model comparison, tuning, and explainability (SHAP) on imbalanced data |
+| **Feature Engineering Challenge** | Week 1 | Completed | Feature engineering under a fixed model constraint (Logistic Regression only) |
+| **WorkPulse** | Week 2 | Completed | Model comparison, tuning, and explainability (SHAP) on imbalanced data |
 | **TransReliant Cascade** | Final Project | Completed | Two-stage ML system: classification → regression cascade |
 
 ---
