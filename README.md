@@ -14,21 +14,21 @@
 &nbsp;
 <img src="https://img.shields.io/badge/Focus-Applied%20ML-10b981?style=flat-square&labelColor=0f172a" />
 &nbsp;
-<img src="https://img.shields.io/badge/Status-In%20Progress-f97316?style=flat-square&labelColor=0f172a" />
+<img src="https://img.shields.io/badge/Status-Completed-22c55e?style=flat-square&labelColor=0f172a" />
 
 </div>
 
 ---
 
-## 👋 Introduction
+## Introduction
 
-This repository is a single home for every task completed as part of the **ACM SIG-AI recruitment process**. Each project was built as a stage-wise checkpoint — starting from core feature engineering, moving into a full classification pipeline, and finishing with a multi-stage, end-to-end cascade system.
+This repository consolidates all tasks completed as part of the **ACM SIG-AI recruitment process**. It contains three independent machine learning projects, each corresponding to a distinct stage of the selection process and reflecting an increasing level of technical scope — from single-model feature engineering, to multi-model comparison, to a complete multi-stage system architecture.
 
-Rather than three disconnected assignments, the projects are meant to be read **in sequence** — each one builds directly on the skills and mistakes of the one before it.
+The projects are structured to be reviewed sequentially, as each builds on the methodology and evaluation practices established in the previous one.
 
 ---
 
-## 🧭 Learning Journey
+## Progression
 
 ```
 Feature Engineering Challenge
@@ -38,27 +38,27 @@ Feature Engineering Challenge
 TransReliant Cascade
 ```
 
-| Stage | What it added |
+| Stage | Core Competency Demonstrated |
 |---|---|
-| **Feature Engineering Challenge** | Learned to extract signal from weak, anonymized data using engineered features alone |
-| **WorkPulse** | Learned to compare multiple models, handle class imbalance, and explain predictions |
-| **TransReliant Cascade** | Learning to design a **multi-model system** — classification feeding into regression, with proper leakage control |
+| **Feature Engineering Challenge** | Extracting predictive signal from weakly correlated, anonymized data under a fixed-model constraint |
+| **WorkPulse** | Comparative model evaluation, class-imbalance handling, and prediction explainability |
+| **TransReliant Cascade** | Multi-model system design — a classification stage feeding a conditionally-triggered regression stage, with leakage-aware architecture |
 
-Each stage intentionally increases in scope: single-model tuning → model comparison → multi-stage pipeline architecture.
+Each project increases in scope relative to the last: single-model optimization → multi-model comparison → multi-stage pipeline architecture.
 
 ---
 
-## 📦 Repository Overview
+## Repository Overview
 
 | Project Name | Stage | Status | Primary Focus |
 |---|:---:|:---:|---|
-| **Feature Engineering Challenge** | Week 1–2 | ✅ Done | Feature engineering under a fixed model constraint (Logistic Regression only) |
-| **WorkPulse** | Week 3–4 | ✅ Done | Model comparison, tuning, and explainability (SHAP) on imbalanced data |
-| **TransReliant Cascade** | Final Project | ✅ Done | Two-stage ML system: Classification → Regression cascade |
+| **Feature Engineering Challenge** | Week 1–2 | Completed | Feature engineering under a fixed model constraint (Logistic Regression only) |
+| **WorkPulse** | Week 3–4 | Completed | Model comparison, tuning, and explainability (SHAP) on imbalanced data |
+| **TransReliant Cascade** | Final Project | Completed | Two-stage ML system: classification → regression cascade |
 
 ---
 
-## 🗓️ Project Timeline
+## Project Timeline
 
 ```
 Week 1-2   →  Feature Engineering Challenge   (Santander Transaction Prediction)
@@ -68,54 +68,53 @@ Final      →  TransReliant Cascade            (Indian Railway Ticket Confirmat
 
 ---
 
-## 1️⃣ Feature Engineering Challenge
+## 01 · Feature Engineering Challenge
 
 **Dataset:** Santander Customer Transaction Prediction (Kaggle)
 
-A binary classification task with one hard constraint: **only Logistic Regression is allowed** — no model swapping, no external data. The goal was to push recall from a baseline of **0.83 to 0.88+** purely through feature engineering.
+A binary classification task constrained to a single model family — Logistic Regression, with no ensembling and no external data permitted. The objective was to raise recall from a baseline of **0.83 to 0.88+** through feature engineering alone.
 
-**Key ideas explored:**
-- Frequency encoding, row-wise statistics, and pairwise interaction features to extract signal from 200 anonymized, weakly-correlated columns
-- Diagnosing a **"fake recall" trap**, where naive `class_weight='balanced'` inflated recall by over-predicting the positive class
-- Replacing a blunt class-weight switch with a **tuned weight + decision-threshold dial**
+**Approach:**
+- Constructed frequency-encoded, row-wise statistical, and pairwise interaction features to surface signal from 200 anonymized, weakly correlated columns
+- Diagnosed a **spurious-recall failure mode**, where naive `class_weight='balanced'` inflated recall by over-predicting the positive class rather than learning genuine signal
+- Replaced the blunt class-weight switch with a **tuned weight ratio combined with a calibrated decision threshold**
 
-**Result:** Recall of **0.888** with a defensible precision/F1 trade-off, using feature engineering alone.
+**Result:** Final test recall of **0.888**, with a precision/F1 trade-off that was deliberately chosen and justified over the naive balanced-weight alternative.
 
 ---
 
-## 2️⃣ WorkPulse
+## 02 · WorkPulse
 
 **Dataset:** IBM HR Analytics Attrition Dataset (Kaggle)
 
-An ML-based employee attrition prediction system built to help HR teams flag at-risk employees before they resign.
+An employee attrition prediction system designed to help HR teams identify at-risk employees ahead of resignation.
 
-**Key ideas explored:**
-- Comparing **Logistic Regression, Random Forest, and XGBoost** head-to-head via cross-validated tuning
-- **10 domain-driven engineered features** (e.g. `WorkloadScore`, `LoyaltyIndex`, `StagnationRisk`) to capture burnout and turnover risk
-- Handling class imbalance with **SMOTE** applied strictly on the training split
-- Model explainability via **SHAP**, and error analysis via False Positive/Negative rates
+**Approach:**
+- Benchmarked **Logistic Regression, Random Forest, and XGBoost** using cross-validated hyperparameter tuning
+- Engineered **10 domain-informed features** (e.g. `WorkloadScore`, `LoyaltyIndex`, `StagnationRisk`) to capture burnout and turnover risk beyond the raw dataset
+- Addressed class imbalance using **SMOTE**, applied strictly to the training split to prevent leakage
+- Evaluated model explainability with **SHAP** and quantified error trade-offs via False Positive/Negative rate analysis
 
-**Result:** XGBoost selected as the winning model (**F1-macro 0.7165, ROC-AUC 0.7963**) for the best balance of missed-attrition risk vs. wasted retention effort.
+**Result:** XGBoost selected as the production model (**F1-macro 0.7165, ROC-AUC 0.7963**), offering the strongest balance between missed attrition risk and unnecessary retention effort.
 
 ---
 
-## 3️⃣ TransReliant Cascade
+## 03 · TransReliant Cascade
 
 **Dataset:** Indian Railway Ticket Confirmation Dataset (Kaggle)
 
-A two-stage cascade system designed to predict ticket confirmation status, and — for passengers flagged as **not confirmed** — estimate how severe their waitlist position is likely to be.
+A two-stage cascade system that predicts ticket confirmation status and, for passengers flagged as unconfirmed, estimates the severity of their waitlist position.
 
-**Planned architecture:**
-- **Model 1 (Classification):** Predicts `Confirmation Status` from booking and journey features
-- **Model 2 (Regression):** Runs only on the subset flagged "Not Confirmed" by Model 1, predicting `Waitlist Position`
-- Genuine cascade design: Model 2 is trained on ground-truth labels but **routed** by Model 1's predictions at inference time — avoiding compounded errors and label leakage
-- Full pipeline planned: EDA → cleaning → feature engineering (`seat_pressure`, `booking_urgency_bucket`) → dual `ColumnTransformer` preprocessing → per-stage model comparison and tuning → threshold optimization → system-level evaluation
+**System design:**
+- **Stage 1 (Classification):** Predicts `Confirmation Status` from booking and journey features
+- **Stage 2 (Regression):** Triggered only for the subset flagged "Not Confirmed" by Stage 1, predicting `Waitlist Position`
+- Stage 2 is trained on ground-truth labels but **routed by Stage 1's predictions at inference time**, avoiding compounded errors and label leakage between stages
 
-**Key features planned:** CLI demo, pipeline architecture diagram, experiment logging, and a full written report covering per-stage and system-wide evaluation.
+**Pipeline scope:** EDA → data cleaning → feature engineering (`seat_pressure`, `booking_urgency_bucket`) → independent preprocessing per stage → per-stage model comparison and tuning → threshold optimization → system-level evaluation, supported by a CLI demo, architecture diagram, and full experiment log.
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ```
 ACM-SIG-AI-TASKS/
@@ -149,7 +148,7 @@ ACM-SIG-AI-TASKS/
 
 ---
 
-## 🧱 Technologies Used
+## Technologies Used
 
 <div align="center">
 
@@ -169,35 +168,35 @@ ACM-SIG-AI-TASKS/
 
 ---
 
-## 🎓 Skills Covered
+## Skills Covered
 
-- Feature engineering under model constraints
-- Handling class imbalance (SMOTE, custom class weights, threshold tuning)
-- Multi-model comparison and hyperparameter tuning (GridSearch / RandomizedSearch)
-- Model explainability (SHAP, feature importance)
+- Feature engineering under fixed-model constraints
+- Class-imbalance handling (SMOTE, custom class weighting, decision-threshold tuning)
+- Comparative model evaluation and hyperparameter search (GridSearch / RandomizedSearch)
+- Model explainability (SHAP, feature and permutation importance)
 - Leakage-aware data pipeline design
-- Multi-stage cascade architecture (classification → regression)
-- Config-driven, reproducible ML pipelines
-- Experiment logging and structured evaluation reporting
+- Multi-stage cascade architecture (classification → conditional regression)
+- Configuration-driven, reproducible ML pipelines
+- Structured experiment logging and evaluation reporting
 
 ---
 
-## 📌 Current Repository Status
+## Current Repository Status
 
 | Project | Status |
 |---|:---:|
-| Feature Engineering Challenge | ✅ Done |
-| WorkPulse | ✅ Done |
-| TransReliant Cascade | ✅ Done |
+| Feature Engineering Challenge | Completed |
+| WorkPulse | Completed |
+| TransReliant Cascade | Completed |
 
 ---
 
-## 🙌 Closing Note
+## Closing Note
 
-This repository reflects a deliberate, stage-by-stage progression — from squeezing signal out of raw features, to comparing and explaining models, to architecting a complete multi-model system. Each project builds on the lessons of the last, with the long-term goal of designing and shipping real, production-minded AI systems.
+This repository documents a deliberate, stage-by-stage progression in applied machine learning — from feature-level optimization, through comparative model evaluation, to the design of a complete multi-model system. Each project builds on the methodology and evaluation standards established in the previous one, with the broader objective of developing production-oriented AI engineering skills.
 
 <div align="center">
 
-**Nithish Kumar S** · B.Tech CS · Building toward AI Engineering
+**Nithish Kumar S** · B.Tech, Computer Science
 
 </div>
