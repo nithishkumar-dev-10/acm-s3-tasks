@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=200&section=header&text=TransReliant%20Cascade&fontSize=60&fontColor=ffffff&fontAlignY=38&desc=Two-Stage%20ML%20System%20for%20Ticket%20Confirmation%20%26%20Waitlist%20Severity&descAlignY=58&descSize=18&descColor=90cdf4&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=200&section=header&text=TransReliant%20Cascade&fontSize=60&fontColor=ffffff&fontAlignY=38&desc=Predictive%20Reliability%20for%20Ticket%20Confirmation%20and%20Waitlist%20Severity&descAlignY=58&descSize=18&descColor=90cdf4&animation=fadeIn" width="100%"/>
 
 <br/>
 
@@ -37,7 +37,7 @@
 <br/>
 <b>🎯 Task</b><br/>
 Classification → Regression<br/>
-<code>cascade, not parallel</code>
+<code>two-stage cascade</code>
 </td>
 <td align="center" width="25%" style="padding: 10px">
 <br/>
@@ -62,13 +62,11 @@ Ridge · RF · XGBoost<br/>
 
 <br/>
 
-> *"Not every passenger needs a waitlist estimate — only the ones who are actually*
-> *going to be waitlisted. Running a regression model on confirmed passengers*
-> *wastes compute and adds noise for no benefit."*
+> *"Users lack a data-driven reliability metric before planning journeys."*
 >
-> **TransReliant Cascade** solves this with a genuine two-stage design: a classifier
-> decides *who* needs a severity estimate, and a regressor — trained only on the
-> relevant subset — decides *how bad* that estimate is.
+> **TransReliant Cascade** answers that directly: a classifier predicts whether a
+> booking will confirm, and — for the ones that won't — a regressor estimates
+> exactly how severe the waitlist situation will be.
 
 <br/>
 
@@ -83,7 +81,7 @@ Ridge · RF · XGBoost<br/>
 ## 📋 Table of Contents
 
 - [Problem Statement](#-problem-statement)
-- [Why a Cascade, Not Two Parallel Models](#-why-a-cascade-not-two-parallel-models)
+- [Approach](#-approach)
 - [Project Structure](#-project-structure)
 - [ML Pipeline Overview](#️-ml-pipeline-overview)
 - [Feature Engineering](#-feature-engineering)
@@ -101,47 +99,18 @@ Ridge · RF · XGBoost<br/>
 
 ## 🎯 Problem Statement
 
-Railway passengers booking a ticket don't just want to know if they're **Confirmed** or **Not Confirmed** — if they're not confirmed, they want to know *how bad* their waitlist situation is before they commit to travel plans around it.
-
-This project frames that as a genuine **two-stage cascade**, built entirely on one dataset:
-
-<table>
-<tr>
-<td width="50%">
-
-### The Challenge
-- Two candidate datasets existed, but shared **no common entity key** — they cannot be linked, only run in parallel, which isn't a real cascade
-- `Waitlist Position == 0` perfectly determines `Confirmed` status in the raw data — using one to predict the other independently is circular, not staged
-- `Train Number` is a near-unique identifier (17,979 / 20,045 rows) and carries no usable signal as a feature
-
-</td>
-<td width="50%">
-
-### The Solution
-- Drop the disconnected, undersized second dataset entirely
-- Use the ticket dataset's own second target (`Waitlist Position`) as a genuinely dependent, non-circular Stage 2 label
-- Stage 2 trains only on passengers who are **actually** not confirmed, and is **routed to** — not trained on — Stage 1's predictions at inference time
-
-</td>
-</tr>
-</table>
+Indian Railways passengers often face uncertainty in ticket confirmations and waitlist outcomes before planning their journeys. TransReliant addresses this challenge by providing data-driven predictions for ticket confirmation reliability and estimated waitlist severity, enabling passengers to make more informed travel decisions.
 
 ---
 
-## 🧩 Why a Cascade, Not Two Parallel Models
+## 🧩 Approach
 
-```
-Model 1 (Classification)          Model 2 (Regression)
-Confirmation Status                Waitlist Position
-     │                                    ▲
-     │  routes flagged passengers only    │
-     └────────────────────────────────────┘
+TransReliant answers this with a two-stage system built on the Indian Railway ticket confirmation data:
 
-Model 2 NEVER runs for passengers Model 1 predicts as "Confirmed" —
-there is nothing to estimate for someone who already has a seat.
-```
+- **Stage 1** predicts whether a booking will be **Confirmed** or **Not Confirmed**, using booking and journey features.
+- **Stage 2** runs only for passengers Stage 1 flags as **Not Confirmed**, and predicts their **Waitlist Position** — turning a binary outcome into a concrete reliability estimate.
 
-This mirrors a classic risk-triage pattern: Model 1 classifies risk (confirmed vs. not), Model 2 estimates severity **only** for the flagged subset. It uses one real, well-sized, clean dataset, requires no artificial dataset-linking hacks, and every design decision is explainable in one sentence.
+This gives users a single, data-driven answer to the question the problem statement raises: not just *will my ticket confirm*, but *if not, how bad will it be*.
 
 <div align="center">
 <img src="reports/figures/architecture.png" alt="TransReliant Cascade architecture diagram" width="90%"/>
@@ -431,7 +400,6 @@ results = predict_cascade(
 
 <div align="center">
 
-**Two-stage cascade: Classification routes, Regression estimates.**
-*One dataset · No artificial linking · Every design choice explainable in one sentence.*
+**Predictive reliability for railway bookings — from confirmation to waitlist severity.**
 
 </div>
