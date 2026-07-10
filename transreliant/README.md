@@ -113,7 +113,7 @@ TransReliant answers this with a two-stage system built on the Indian Railway ti
 This gives users a single, data-driven answer to the question the problem statement raises: not just *will my ticket confirm*, but *if not, how bad will it be*.
 
 <div align="center">
-<img src="reports/figures/architecture.png" alt="TransReliant Cascade architecture diagram" width="90%"/>
+<img src="reports/figures/pipeline_arch.png" alt="TransReliant Cascade architecture diagram" width="90%"/>
 </div>
 
 ---
@@ -247,7 +247,7 @@ Every model comparison (Stage 1 and Stage 2) is logged run-by-run — not just t
 
 ## 🎯 Threshold Optimization
 
-The default 0.5 decision threshold is not used. Since a missed "Not Confirmed" passenger (someone blindsided with no waitlist estimate) is costlier than a false alarm (Stage 2 runs unnecessarily), the threshold is optimized for **recall on the "Not Confirmed" class**, subject to a minimum precision constraint, rather than for raw F1. The chosen threshold — **0.55** — is stored in `config.yaml`, not hardcoded in source.
+The default 0.5 decision threshold is not used. Since a missed "Not Confirmed" passenger (someone blindsided with no waitlist estimate) is costlier than a false alarm (Stage 2 runs unnecessarily), the threshold is optimized for **recall on the "Not Confirmed" class**, subject to a minimum precision constraint, rather than for raw F1. The chosen threshold — **0.6** as of the current run — is stored in `config.yaml`, not hardcoded in source. (An earlier training run had landed on 0.55; retraining shifted the precision/recall trade-off slightly, moving the selected operating point.)
 
 ---
 
@@ -299,7 +299,7 @@ Estimated Waitlist Pos. : 63 (out of ~200)
 | Train/test split | 80% / 20% | `random_state=42`, stratified on Stage 1 target |
 | Model family, Stage 1 | Best of LR / RF / XGBoost | Selected by cross-validated ROC-AUC |
 | Model family, Stage 2 | Best of Ridge / RF / XGBoost | Selected by cross-validated RMSE |
-| Decision threshold | **0.55**, stored in `config.yaml` | Optimized for recall on "Not Confirmed," subject to a precision floor |
+| Decision threshold | **0.6**, stored in `config.yaml` | Optimized for recall on "Not Confirmed," subject to a precision floor |
 | External data | None | All features derived from the single ticket confirmation dataset |
 
 ---
