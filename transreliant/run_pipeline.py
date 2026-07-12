@@ -10,7 +10,7 @@ import train_stage1
 import train_stage2
 import evaluate
 
-
+#calling the fucntions defined earlier 
 def main():
     cfg = load_config()
 
@@ -32,11 +32,11 @@ def main():
     train_stage2.main()
 
     print("\n=== Evaluation: threshold optimization + figures + metrics ===")
-    evaluate.evaluate_stage1(cfg)   # Steps 12+13
-    evaluate.evaluate_stage2(cfg)   # Step 16
+    evaluate.evaluate_stage1(cfg)  
+    evaluate.evaluate_stage2(cfg)   
 
     print("\n=== System-level (cascade) evaluation ===")
-    evaluate.evaluate_system(cfg)   # Step 20
+    evaluate.evaluate_system(cfg)   
 
     print(
         "\nPipeline complete.\n"

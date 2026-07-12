@@ -3,3 +3,5 @@ data/raw/*
 venv/
 .env
 .vscode
+.ipynb_checkpoints/
+.jupyter/
