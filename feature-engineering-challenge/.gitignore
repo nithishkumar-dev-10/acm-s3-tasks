@@ -1,9 +1,0 @@
-data/raw/*
-!data/raw/.gitkeep
-venv/
-.env
-.vscode
-.ipynb_checkpoints/
-.jupyter/
-.DS_Store
-**/.DS_Store
